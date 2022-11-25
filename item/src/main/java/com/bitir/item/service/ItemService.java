@@ -34,7 +34,7 @@ public class ItemService {
         return items.stream().map(this::mapToItemResponse).collect(Collectors.toList());
     }
 
-    private ItemResponse mapToItemResponse(Item item) {
+    private ItemResponse mapToItemResponse(Item item){
         return ItemResponse.builder()
                 .id(item.getId())
                 .name(item.getName())
