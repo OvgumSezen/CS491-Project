@@ -28,7 +28,7 @@ public class MenuService {
 
     public List<MenuResponse> getAllMenus() {
         List<Menu> menus = (List<Menu>) menuRepository.findAll();
-        log.info("All items are extracted from the database.");
+        log.info("All menus are queried from the database.");
         return menus.stream().map(this::mapMenuToResponse).collect(Collectors.toList());
     }
 

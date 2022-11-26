@@ -30,7 +30,7 @@ public class ItemService {
 
     public List<ItemResponse> getAllItems(){
         List<Item> items = (List<Item>) itemRepository.findAll();
-        log.info("All items are extracted from the database.");
+        log.info("All items are queried from the database.");
         return items.stream().map(this::mapToItemResponse).collect(Collectors.toList());
     }
 
