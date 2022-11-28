@@ -23,7 +23,7 @@ public class MenuService {
                 .build();
 
         menuRepository.save(menu);
-        log.info("Menu {} is saved", menu.getId());
+        log.info("Menu {} is saved.", menu.getId());
     }
 
     public List<MenuResponse> getAllMenus() {

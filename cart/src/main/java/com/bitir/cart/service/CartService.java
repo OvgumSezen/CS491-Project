@@ -23,7 +23,7 @@ public class CartService {
                 .build();
 
         cartRepository.save(cart);
-        log.info("Cart {} is saved", cart.getId());
+        log.info("Cart {} is saved.", cart.getId());
     }
 
     public List<CartResponse> getAllCarts(){
