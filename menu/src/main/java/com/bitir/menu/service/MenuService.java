@@ -39,4 +39,28 @@ public class MenuService {
                 .items(menu.getItems())
                 .build();
     }
+
+    public List<MenuResponse> getMenusById(List<Integer> ids){
+        List<Menu> menus = (List<Menu>) menuRepository.findAllById(ids);
+        log.info("{} menu(s) is/are queried.", menus.size());
+        return menus.stream().map(this::mapMenuToResponse).collect(Collectors.toList());
+    }
+
+    public MenuResponse updateMenuById(MenuRequest menuRequest, Integer id){
+        Menu menu = menuRepository.findMenuById(id);
+        this.updateMenu(menu, menuRequest);
+        menuRepository.save(menu);
+        log.info("Menu {} is updated.", menu.getId());
+        return this.mapMenuToResponse(menu);
+    }
+
+    private void updateMenu(Menu menu, MenuRequest menuRequest){
+        menu.setItems(menuRequest.getItems());
+        menu.setName(menuRequest.getName());
+    }
+
+    public void removeMenuById(Integer id){
+        menuRepository.deleteMenuById(id);
+        log.info("Menu {} is removed.", id);
+    }
 }
