@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class OrderController {
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderResponse> getOrderByIds(@RequestBody List<Integer> id){
+    public List<OrderResponse> getOrdersById(@RequestBody List<Integer> id){
         return orderService.getOrdersById(id);
     }
 
@@ -41,6 +42,7 @@ public class OrderController {
         return orderService.updateOrderById(orderRequest, id);
     }
 
+    @Transactional
     @PostMapping("/remove")
     @ResponseStatus(HttpStatus.OK)
     public void removeOrderById(@RequestParam("id") Integer id){

@@ -1,0 +1,17 @@
+package com.bitir.offer.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class OfferRequest {
+    private Double discount;
+    private List<Integer> items;
+}
