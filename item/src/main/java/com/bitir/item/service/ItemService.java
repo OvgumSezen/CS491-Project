@@ -23,7 +23,6 @@ public class ItemService {
                 .price(itemRequest.getPrice())
                 .description(itemRequest.getDescription())
                 .build();
-
         itemRepository.save(item);
         log.info("Item {} is saved.", item.getId());
     }
@@ -43,4 +42,28 @@ public class ItemService {
                 .build();
     }
 
+    public List<ItemResponse> getItemsById(List<Integer> ids){
+        List<Item> items = (List<Item>) itemRepository.findAllById(ids);
+        log.info("{} item(s) is/are queried.", items.size());
+        return items.stream().map(this::mapToItemResponse).collect(Collectors.toList());
+    }
+
+    public ItemResponse updateItemById(ItemRequest itemRequest, Integer id){
+        Item item = itemRepository.findItemById(id);
+        this.updateItem(item, itemRequest);
+        itemRepository.save(item);
+        log.info("Item {} is updated.", item.getId());
+        return this.mapToItemResponse(item);
+    }
+
+    private void updateItem(Item item, ItemRequest itemRequest){
+        item.setName(itemRequest.getName());
+        item.setDescription(itemRequest.getDescription());
+        item.setPrice(itemRequest.getPrice());
+    }
+
+    public void removeItemById(Integer id){
+        itemRepository.deleteItemById(id);
+        log.info("Item {} is removed.", id);
+    }
 }

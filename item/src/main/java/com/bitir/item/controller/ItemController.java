@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -25,5 +26,25 @@ public class ItemController {
     @ResponseStatus(HttpStatus.OK)
     public List<ItemResponse> getAllItems(){
         return itemService.getAllItems();
+    }
+
+    @GetMapping("/get")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ItemResponse> getItemsById(@RequestBody List<Integer> ids){
+        return itemService.getItemsById(ids);
+    }
+
+    @PostMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public ItemResponse updateItemById(@RequestBody ItemRequest itemRequest,
+                                       @RequestParam("id") Integer id){
+        return itemService.updateItemById(itemRequest, id);
+    }
+
+    @Transactional
+    @PostMapping("/remove")
+    @ResponseStatus(HttpStatus.OK)
+    public void removeItemById(@RequestParam("id") Integer id){
+        itemService.removeItemById(id);
     }
 }
