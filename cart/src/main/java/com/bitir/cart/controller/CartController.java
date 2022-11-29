@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -25,5 +26,25 @@ public class CartController {
     @ResponseStatus(HttpStatus.OK)
     public List<CartResponse> getAllCarts(){
         return cartService.getAllCarts();
+    }
+
+    @GetMapping("/get")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CartResponse> getCartsById(@RequestBody List<Integer> ids){
+        return cartService.getCartsById(ids);
+    }
+
+    @PostMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public CartResponse updateCartById(@RequestBody CartRequest cartRequest,
+                                       @RequestParam("id") Integer id){
+        return cartService.updateCartById(cartRequest, id);
+    }
+
+    @Transactional
+    @PostMapping("/remove")
+    @ResponseStatus(HttpStatus.OK)
+    public void removeCartById(@RequestParam Integer id){
+        cartService.removeCartById(id);
     }
 }

@@ -38,4 +38,27 @@ public class CartService {
                 .orders(cart.getOrders())
                 .build();
     }
+
+    public List<CartResponse> getCartsById(List<Integer> ids){
+        List<Cart> carts = (List<Cart>) cartRepository.findAllById(ids);
+        log.info("{} cart(s) is/are queried.", carts.size());
+        return carts.stream().map(this::mapCartToResponse).collect(Collectors.toList());
+    }
+
+    public CartResponse updateCartById(CartRequest cartRequest, Integer id){
+        Cart cart = cartRepository.findCartById(id);
+        this.updateOrder(cart, cartRequest);
+        cartRepository.save(cart);
+        log.info("Cart {} is updated.", cart.getId());
+        return this.mapCartToResponse(cart);
+    }
+
+    private void updateOrder(Cart cart, CartRequest cartRequest) {
+        cart.setOrders(cartRequest.getOrders());
+    }
+
+    public void removeCartById(Integer id){
+        cartRepository.deleteCartById(id);
+        log.info("Cart {} is removed.", id);
+    }
 }
