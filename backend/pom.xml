@@ -21,6 +21,7 @@
         <module>order-service</module>
         <module>cart-service</module>
         <module>offer-service</module>
+        <module>notification-service</module>
     </modules>
 
     <build>
