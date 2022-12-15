@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:bitirapp/models/build_settings.dart';
-import 'package:bitirapp/models/country_selection.dart';
-import 'package:bitirapp/models/language_selection.dart';
 import '../../bars/buttom_bar.dart';
 import 'package:bitirapp/bars/app_bar.dart';
+
+import '../../bars/selection_bars/build_settings.dart';
+import '../../bars/selection_bars/country_selection.dart';
+import '../../bars/selection_bars/language_selection.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);

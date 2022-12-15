@@ -1,7 +1,7 @@
 import 'package:bitirapp/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bitirapp/pages/login/constant.dart';
+import 'package:bitirapp/pages/login/login_constants.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
