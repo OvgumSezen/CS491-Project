@@ -1,14 +1,12 @@
-import 'package:bitirapp/models/language_selection.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
+import 'package:bitirapp/pages/settings/about_us.dart';
 import 'package:bitirapp/pages/settings/account_settings.dart';
 import 'package:bitirapp/pages/settings/addresses.dart';
 import 'package:flutter/material.dart';
 import 'package:bitirapp/bars/app_bar.dart';
-
 import 'package:bitirapp/bars/buttom_bar.dart';
 
-import '../../models/country_selection.dart';
-
+import '../../bars/selection_bars/language_selection.dart';
 
 class  SettingsTry extends StatefulWidget {
   const SettingsTry({super.key});
@@ -417,7 +415,7 @@ class _SettingsTryState extends State< SettingsTry> {
                                     backgroundColor:MaterialStateProperty.all(Colors.white),
                                   ),
                                   onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => TryPage())),
+                                      MaterialPageRoute(builder: (context) => AboutUs())),
                                   child: Icon(Icons.arrow_forward_ios,
                                       color: Color.fromRGBO(169, 169, 169, 1.0),
                                   ),
