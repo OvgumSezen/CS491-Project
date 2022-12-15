@@ -21,38 +21,8 @@ class _BuildLanguageSelectionState extends State<BuildLanguageSelection> {
       //onTap: (){
       //Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()));
       //},
-      child: Container(
-        width: 300,
-        height: 45,
-        child: Row(
-          children: [
-            Container(
-                width: 20,
-                height: 20,
-                child: Image.asset("Assets/internet/internet (1).png")),
-            const SizedBox(
-              width: 10,
-            ),
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Language",
-                  style: TextStyle(
-                      fontSize: 20, color: Color.fromRGBO(0, 0, 0, 1)),
-                )),
-            /*
-            const Text(
-              "Dil",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-              ),
-            ),
+      child:
 
-             */
-            const SizedBox(
-              width: 85,
-            ),
             Container(
               width: 150,
               height: 40,
@@ -116,9 +86,6 @@ class _BuildLanguageSelectionState extends State<BuildLanguageSelection> {
                         });
                       }),
                 ),
-              ),
-            )
-          ],
         ),
       ),
     );

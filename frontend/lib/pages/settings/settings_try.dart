@@ -1,3 +1,4 @@
+import 'package:bitirapp/models/language_selection.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
 import 'package:bitirapp/pages/settings/account_settings.dart';
 import 'package:bitirapp/pages/settings/addresses.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:bitirapp/bars/app_bar.dart';
 
 import 'package:bitirapp/bars/buttom_bar.dart';
+
+import '../../models/country_selection.dart';
 
 
 class  SettingsTry extends StatefulWidget {
@@ -361,6 +364,7 @@ class _SettingsTryState extends State< SettingsTry> {
 
                           ),
                         ),
+                        /*
                         Container(
 
                             child: SizedBox(width:40 ,height: 40,
@@ -373,6 +377,8 @@ class _SettingsTryState extends State< SettingsTry> {
                                       MaterialPageRoute(builder: (context) => TryPage())),
                                   child: Icon(Icons.arrow_forward_ios,color: Color.fromRGBO(169, 169, 169, 1.0),)),)
                         ),
+                        */
+                        BuildLanguageSelection(),
                       ],
                     ),
                   ),

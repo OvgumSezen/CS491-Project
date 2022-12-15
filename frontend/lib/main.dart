@@ -1,11 +1,12 @@
+import 'package:bitirapp/pages/login/login_screen.dart';
 import 'package:bitirapp/pages/settings/settings_try.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
 import 'package:bitirapp/pages/cart/try2_page.dart';
-import 'package:bitirapp/walkthrought/one.dart';
+import 'package:bitirapp/pages/walkthrought/walk1.dart';
+import 'package:bitirapp/pages/walkthrought/walkpage.dart';
 import 'package:flutter/material.dart';
 import 'package:bitirapp/pages/home/home.dart';
 import 'package:bitirapp/pages/settings/settings_page.dart';
-import 'package:bitirapp/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         //backgroundColor:Color(0xffffffff),
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/homePage',
+      initialRoute: '/walk',
       //initialRoute: '/homePage',
       routes: {
 
@@ -34,8 +35,9 @@ class MyApp extends StatelessWidget {
         '/try': (context) => const TryPage(),
         '/try2': (context) => const Try2Page(),
         '/loginScreen': (context) => (LoginScreen()),
-        '/One': (context) => (const One()),
+        '/One': (context) => (const Walk1()),
         '/settingsTry': (context) => (const SettingsTry()),
+        '/walk': (context) => (const Walk()),
       },
     );
   }

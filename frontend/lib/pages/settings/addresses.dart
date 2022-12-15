@@ -25,9 +25,7 @@ class _AddressesState extends State<Addresses> {
     return Scaffold(
       appBar: AppBarWidgetIcon(Size.fromHeight(60.0), "Addresses"),
 
-      bottomNavigationBar: const MyBottomNavigationBar(
-        currentIndex: 0,
-      ),
+
       body:
       SingleChildScrollView(
         child:

@@ -30,10 +30,7 @@ class AppBarWidgetIcon extends StatelessWidget with PreferredSizeWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Image.asset(
-                "Assets/arrow/arrow-white.png",
-                color: Colors.black,
-              ),
+              icon: Icon(Icons.arrow_back)
             ),
           ],
         ),
