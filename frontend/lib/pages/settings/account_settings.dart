@@ -27,10 +27,12 @@ class _AccountSettingsState extends State<AccountSettings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidgetIcon(Size.fromHeight(60.0), "Account Settings"),
-
+/*
       bottomNavigationBar: const MyBottomNavigationBar(
         currentIndex: 3,
       ),
+
+ */
       body:SingleChildScrollView(
     child:
       Container(
