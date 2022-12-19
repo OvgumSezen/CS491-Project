@@ -6,8 +6,12 @@ import com.bitir.menu.model.Menu;
 import com.bitir.menu.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,14 +20,46 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MenuService {
     private final MenuRepository menuRepository;
-    public void createMenu(MenuRequest menuRequest) {
-        Menu menu = Menu.builder()
-                .name(menuRequest.getName())
-                .items(menuRequest.getItems())
-                .build();
+    private final WebClient webClient;
+    public Boolean createMenu(MenuRequest menuRequest) {
+        List<Integer> itemIds = menuRequest.getItems();
 
-        menuRepository.save(menu);
-        log.info("Menu {} is saved.", menu.getId());
+        // Check if the items in the menu exist by making a request to the item api.
+        Boolean itemsExist = webClient.post()
+                .uri("http://localhost:8082/api/item/items-exist")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(itemIds))
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+
+        if(itemsExist != null && itemsExist) {
+            Menu menu = Menu.builder()
+                    .name(menuRequest.getName())
+                    .items(menuRequest.getItems())
+                    .build();
+
+            menuRepository.save(menu);
+            log.info("Menu {} is saved.", menu.getId());
+
+            // Notify the business by sending a notification by making a request to the notification api.
+            HashMap<String, String> json = new HashMap<>();
+            json.put("receiver", "bitirapp.target@gmail.com");
+            json.put("subject", "Menu Notification");
+            json.put("content", "You have successfully created a menu");
+
+            webClient.post()
+                    .uri("http://localhost:8084/api/notification/send-mail")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromValue(json))
+                    .retrieve()
+                    .bodyToMono(Boolean.class)
+                    .subscribe();
+
+            return Boolean.TRUE;
+        } else {
+            throw new IllegalArgumentException("The items specified does not exist.");
+        }
     }
 
     public List<MenuResponse> getAllMenus() {

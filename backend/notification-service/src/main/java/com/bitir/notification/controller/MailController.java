@@ -14,8 +14,8 @@ public class MailController {
 
     @PostMapping("/send-mail")
     @ResponseStatus(HttpStatus.OK)
-    public void sendMail(@RequestBody MailRequest mailRequest) {
-        mailService.sendMail(mailRequest);
+    public Boolean sendMail(@RequestBody MailRequest mailRequest) {
+        return mailService.sendMail(mailRequest);
     }
 
 }

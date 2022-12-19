@@ -17,8 +17,8 @@ public class MenuController {
     private final MenuService menuService;
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addMenu(@RequestBody MenuRequest menuRequest){
-        menuService.createMenu(menuRequest);
+    public Boolean createMenu(@RequestBody MenuRequest menuRequest){
+        return menuService.createMenu(menuRequest);
     }
 
     @GetMapping("/get-all")

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class MailService {
     private final JavaMailSender javaMailSender;
 
-    public void sendMail(MailRequest mailRequest) {
+    public Boolean sendMail(MailRequest mailRequest) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(mailRequest.getReceiver());
         simpleMailMessage.setSubject(mailRequest.getSubject());
@@ -21,5 +21,7 @@ public class MailService {
 
         javaMailSender.send(simpleMailMessage);
         log.info("Mail notification is sent.");
+
+        return Boolean.TRUE;
     }
 }

@@ -34,6 +34,18 @@ public class ItemController {
         return itemService.getItemsById(ids);
     }
 
+    @GetMapping("/get-by-name")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ItemResponse> getItemsByName(@RequestBody List<String> names){
+        return itemService.getItemsByName(names);
+    }
+
+    @PostMapping("/items-exist")
+    @ResponseStatus(HttpStatus.OK)
+    public Boolean itemsExist(@RequestBody List<Integer> ids){
+        return itemService.itemsExist(ids);
+    }
+
     @PostMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public ItemResponse updateItemById(@RequestBody ItemRequest itemRequest,
