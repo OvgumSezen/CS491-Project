@@ -1,3 +1,4 @@
+import 'package:bitirapp/pages/login/login_screen.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
 import 'package:bitirapp/pages/settings/about_us.dart';
 import 'package:bitirapp/pages/settings/account_settings.dart';
@@ -448,6 +449,20 @@ class _SettingsTryState extends State< SettingsTry> {
 
                           ),
                         ),
+                        Container(child: SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: ElevatedButton(
+                          style:ButtonStyle(
+                          backgroundColor:MaterialStateProperty.all(Colors.white),
+      ),
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => LoginScreen())),
+      child: Icon(Icons.exit_to_app,
+        color: Color.fromRGBO(169, 169, 169, 1.0),
+      ),
+    ),
+                        ),)
 
                       ],
                     ),
