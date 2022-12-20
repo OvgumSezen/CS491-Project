@@ -1,8 +1,11 @@
+import 'package:bitirapp/pages/construction_zone.dart';
 import 'package:bitirapp/pages/login/login_screen.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
 import 'package:bitirapp/pages/settings/about_us.dart';
 import 'package:bitirapp/pages/settings/account_settings.dart';
 import 'package:bitirapp/pages/settings/addresses.dart';
+import 'package:bitirapp/pages/settings/credit_cards.dart';
+import 'package:bitirapp/pages/settings/delivery_option.dart';
 import 'package:flutter/material.dart';
 import 'package:bitirapp/bars/app_bar.dart';
 import 'package:bitirapp/bars/buttom_bar.dart';
@@ -213,7 +216,7 @@ class _SettingsTryState extends State< SettingsTry> {
                                     backgroundColor:MaterialStateProperty.all(Colors.white),
                                   ),
                                   onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => TryPage())),
+                                      MaterialPageRoute(builder: (context) => ConstructionZone())),
                                   child: Icon(Icons.arrow_forward_ios,color: Color.fromRGBO(169, 169, 169, 1.0),)),)
                         ),
                       ],
@@ -251,7 +254,7 @@ class _SettingsTryState extends State< SettingsTry> {
                                     backgroundColor:MaterialStateProperty.all(Colors.white),
                                   ),
                                   onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => TryPage())),
+                                      MaterialPageRoute(builder: (context) => DeliveryOption())),
                                   child: Icon(Icons.arrow_forward_ios,color: Color.fromRGBO(169, 169, 169, 1.0),)),)
 
 
@@ -294,7 +297,7 @@ class _SettingsTryState extends State< SettingsTry> {
                                     backgroundColor:MaterialStateProperty.all(Colors.white),
                                   ),
                                   onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => TryPage())),
+                                      MaterialPageRoute(builder: (context) => ConstructionZone())),
                                   child: Icon(Icons.arrow_forward_ios,color: Color.fromRGBO(169, 169, 169, 1.0),)),)
                         ),
                       ],
@@ -332,7 +335,7 @@ class _SettingsTryState extends State< SettingsTry> {
                                     backgroundColor:MaterialStateProperty.all(Colors.white),
                                   ),
                                   onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) => TryPage())),
+                                      MaterialPageRoute(builder: (context) => CreditCards())),
                                   child: Icon(Icons.arrow_forward_ios,color: Color.fromRGBO(169, 169, 169, 1.0),)),)
                         ),
                       ],
