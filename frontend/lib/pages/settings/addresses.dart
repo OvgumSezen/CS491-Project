@@ -72,6 +72,7 @@ class _AddressesState extends State<Addresses> {
                       child:
                       Row(
                         crossAxisAlignment:  CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:  [
                           Container(
                             // autolayouthorizontaltEV (I163:3013;117:919;114:749)
@@ -107,12 +108,22 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           Container(
-                            // stylenonethemedefaultstatesele (I163:3013;117:919;114:774)
-                            margin:  EdgeInsets.fromLTRB(0, 2, 0, 0),
-                            width:  20,
-                            height:  20,
-                            child:
-                            Icon(Icons.check_circle_rounded,color: Colors.black),
+                            width:  40,
+                            height:  40,
+                            child:ElevatedButton(
+                              style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Color(0xFF26CA5C)),
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                      ),
+                                  ),
+
+                              ),
+                              onPressed: () { print("button clicked"); },
+                              child: Icon(Icons.check_circle_outline),
+                              
+                            )
+                            //Icon(Icons.check_circle_rounded,color: Colors.black),
                           ),
                         ],
                       ),
@@ -129,7 +140,7 @@ class _AddressesState extends State<Addresses> {
                       height:  23,
                     ),
                     Container(
-                      // component7ciD (I117:955;117:943)
+                      // component15nBT (I163:3013;117:919)
                       padding:  EdgeInsets.fromLTRB(15, 14, 28, 9),
                       width:  double.infinity,
                       height:  71,
@@ -140,9 +151,10 @@ class _AddressesState extends State<Addresses> {
                       child:
                       Row(
                         crossAxisAlignment:  CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:  [
                           Container(
-                            // autolayouthorizontaliWM (I117:955;117:943;114:749)
+                            // autolayouthorizontaltEV (I163:3013;117:919;114:749)
                             margin:  EdgeInsets.fromLTRB(0, 0, 7.33, 5.33),
                             width:  34.67,
                             height:  42.67,
@@ -150,15 +162,15 @@ class _AddressesState extends State<Addresses> {
                             Icon(Icons.location_on_outlined),
                           ),
                           Container(
-                            // autolayoutverticalDxu (I117:955;117:943;114:725)
-                            margin:  EdgeInsets.fromLTRB(0, 0, 148, 0),
+                            // autolayoutverticalz2d (I163:3013;117:919;114:725)
+                            margin:  EdgeInsets.fromLTRB(0, 0, 192, 0),
                             height:  double.infinity,
                             child:
                             Column(
                               crossAxisAlignment:  CrossAxisAlignment.start,
                               children:  [
                                 Container(
-                                  // locationySH (I117:955;117:943;114:727)
+
                                   margin:  EdgeInsets.fromLTRB(0, 0, 0, 6),
                                   child:
                                   Text(
@@ -167,24 +179,35 @@ class _AddressesState extends State<Addresses> {
                                   ),
                                 ),
                                 Text(
-                                  // timessquarenycmanhattan27YNu (I117:955;117:943;114:730)
-                                  'Bilkent Ankara',
+                                  // timessquarenycmanhattan271yK (I163:3013;117:919;114:730)
+                                  'Bilkent ',
 
                                 ),
                               ],
                             ),
                           ),
                           Container(
-                            // stylenonethemedefaultstatesele (I117:955;117:943;114:774)
-                            margin:  EdgeInsets.fromLTRB(0, 2, 0, 0),
-                            width:  20,
-                            height:  20,
-                            child:
-                            Icon(Icons.check_circle_outline,color: Colors.black),
+                              width:  40,
+                              height:  40,
+                              child:ElevatedButton(
+                                style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Color(0xFF26CA5C)),
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+
+                                ),
+                                onPressed: () { print("button clicked"); },
+                                child: Icon(Icons.check_circle_outline),
+
+                              )
+                            //Icon(Icons.check_circle_rounded,color: Colors.black),
                           ),
                         ],
                       ),
                     ),
+
 
 
 
