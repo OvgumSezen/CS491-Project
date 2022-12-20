@@ -1,5 +1,6 @@
 import 'package:bitirapp/controller/session_controller/session_controller.dart';
 import 'package:bitirapp/model/user/user.dart';
+import 'package:bitirapp/pages/change.dart';
 import 'package:bitirapp/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:bitirapp/bars/buttom_bar.dart';
@@ -124,7 +125,8 @@ class _AccountSettingsState extends State<AccountSettings> {
                                   child:
 
                                   Text(
-                                    'Gizem Bal',
+                                    Singleton.instance.user.name,
+                                    //'Gizem Bal',
                                     style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
 
                                   ),
@@ -226,8 +228,7 @@ class _AccountSettingsState extends State<AccountSettings> {
                                 child:ElevatedButton(
                                   style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Color(0xFF26CA5C))),
                                       child: Icon(Icons.edit,color: Colors.black,size: 20,),
-                                  onPressed: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => HomePage())),
+                                  onPressed: () => Singleton.instance.user.name = "Changed",
                                 )
 
                               ),
@@ -308,7 +309,7 @@ class _AccountSettingsState extends State<AccountSettings> {
                         Container(
                           padding:  EdgeInsets.fromLTRB(24, 20, 26, 20),
                           width:  double.infinity,
-                          height:  56,
+                          height:  69,
                           decoration:  BoxDecoration (
                             color:  Color(0xfff8f8fa),
                             borderRadius:  BorderRadius.circular(18),
@@ -319,7 +320,7 @@ class _AccountSettingsState extends State<AccountSettings> {
                             crossAxisAlignment:  CrossAxisAlignment.center,
                             children:  [
                               Container(
-                                margin:  EdgeInsets.fromLTRB(0, 0, 189, 0),
+                                margin:  EdgeInsets.fromLTRB(0, 0, 170, 0),
                                 height:  double.infinity,
                                 child:Text(Singleton.instance.user.password),
                                     /*
@@ -405,22 +406,19 @@ class _AccountSettingsState extends State<AccountSettings> {
                                   ],
                                 ),*/
                               ),
-                              Opacity(
-                                opacity:  1,
-                                child:
+
                                 Container(
                                   width:  20,
                                   height:  20,
                                   child:
                                   Icon(Icons.remove_red_eye,size: 20,)
                                 ),
-                              ),
-                              Opacity(
-                                opacity:  1,
-                                child:
+
+
+
                                 Container(
-                                    width:  30,
-                                    height:  30,
+                                    width:  35,
+                                    height:  35,
                                     child:
                                     ElevatedButton(
                                       style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Color(0xFF26CA5C))),
@@ -429,7 +427,6 @@ class _AccountSettingsState extends State<AccountSettings> {
                                           MaterialPageRoute(builder: (context) => HomePage())),
                                     )
                                 ),
-                              )
                             ],
                           ),
                         ),
