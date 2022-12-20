@@ -86,6 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerRight,
       child: ElevatedButton(
+
+        style:ButtonStyle(
+          backgroundColor:MaterialStateProperty.all(Colors.black26),
+        ),
         onPressed: () => print('Forgot Password Button Pressed'),
         child: Text(
           'Forgot Password?',
@@ -128,6 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: ElevatedButton(
 
+
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => HomePage())),
 
@@ -141,6 +146,10 @@ class _LoginScreenState extends State<LoginScreen> {
             fontFamily: 'OpenSans',
           ),
         ),
+
+    style:ButtonStyle(
+    backgroundColor:MaterialStateProperty.all(Color.fromRGBO(38, 202, 92, 1.0),
+    ),),
       ),
     );
   }
