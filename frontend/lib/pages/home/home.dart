@@ -39,28 +39,26 @@ class _HomePageState extends State<HomePage> {
       appBar: HomeAppWidget(),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: 100,
               child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: Singleton.instance.categories.length,
-              itemBuilder: ((context, index) {
-                return CategoryButton(
-                  category: Singleton.instance.categories[index],
-                  notifyParent: () => setState(() {}),
-                );
-              }),
-                ),
+                scrollDirection: Axis.horizontal,
+                itemCount: Singleton.instance.categories.length,
+                itemBuilder: ((context, index) {
+                  return CategoryButton(
+                    category: Singleton.instance.categories[index],
+                    notifyParent: () => setState(() {}),
+                  );
+                }),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  Singleton.instance.seletedCategoryRestaurant,
+                  Singleton.instance.selectedCategoryRestaurant,
                   style: Theme.of(context)
                       .textTheme
                       .headline6!
@@ -74,11 +72,13 @@ class _HomePageState extends State<HomePage> {
                 itemCount: Singleton.instance.restaurantList.length,
                 itemBuilder: ((context, index) {
                   if (Singleton.instance.restaurantList[index].category ==
-                      Singleton.instance.seletedCategoryRestaurant) {
+                      Singleton.instance.selectedCategoryRestaurant) {
                     return RestaurantCard(
                         restaurant: Singleton.instance.restaurantList[index]);
-                  } else if (Singleton.instance.seletedCategoryRestaurant ==
-                      "Popular Restaurants") {
+                  } else if (Singleton.instance.selectedCategoryRestaurant ==
+                          "Popular Restaurants" ||
+                      Singleton.instance.selectedCategoryRestaurant ==
+                          "All Restaurants") {
                     return RestaurantCard(
                         restaurant: Singleton.instance.restaurantList[index]);
                   }
@@ -103,55 +103,62 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      toolbarHeight: 100,
-      backgroundColor: Colors.white,
-      leading: Image.asset(restaurant.image),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            restaurant.name, 
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .copyWith(color: Colors.grey[900]),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Rating:" + restaurant.rating.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Colors.grey[900]),
+    return GestureDetector(
+      onTap: () {
+        print(restaurant.name);
+        Singleton.instance.SelectedRestaurant = restaurant;
+        Navigator.pushNamed(context, '/restaurant');
+      },
+      child: AppBar(
+        toolbarHeight: 100,
+        backgroundColor: Colors.white,
+        leading: Image.asset(restaurant.image),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              restaurant.name,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .copyWith(color: Colors.grey[900]),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Rating:" + restaurant.rating.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.grey[900]),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  restaurant.category,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Colors.grey[600]),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    restaurant.category,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.grey[600]),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  restaurant.deliveryTime.toString() + " min",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(color: Colors.grey[600]),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    restaurant.deliveryTime.toString() + " min",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(color: Colors.grey[600]),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -170,43 +177,41 @@ class CategoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-              width: 100,
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.greenAccent.shade400,
+          width: 100,
+          margin: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.greenAccent.shade400,
+          ),
+          child: Column(
+            children: [
+              IconButton(
+                  iconSize: 50,
+                  icon: Image.asset(category.imageUrl),
+                  onPressed: () {
+                    print(Singleton.instance.selectedCategoryRestaurant);
+                    Singleton.instance.selectedCategoryRestaurant = category.name;
+                    if (Singleton.instance.selectedCategoryRestaurant ==
+                        "All Restaurants") {
+                      Singleton.instance.selectedCategoryRestaurant =
+                          "Popular Restaurants";
+                    } 
+                    print(Singleton.instance.selectedCategoryRestaurant);
+                    notifyParent();
+                  }),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Text(
+                  category.name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: Colors.black),
+                ),
               ),
-              child: Column(
-                children: [
-                  IconButton(
-                      iconSize: 50,
-                      icon: Image.asset(category.imageUrl),
-                      onPressed: () {
-                        print("Category Button Pressed");
-                        if (Singleton.instance.seletedCategoryRestaurant ==
-                            category.name) {
-                          Singleton.instance.seletedCategoryRestaurant =
-                              "Popular Restaurants";
-                        } else {
-                          Singleton.instance.seletedCategoryRestaurant = category.name;
-                        }
-                        notifyParent();
-                      }
-                    ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text(
-                      category.name,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(color: Colors.black),
-                    ),
-                  ),
-                ],
-              )
-              ),
-      );
+            ],
+          )),
+    );
   }
 }
 
