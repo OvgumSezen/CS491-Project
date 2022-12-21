@@ -1194,4 +1194,5 @@ class Singleton {
   );
 
   String selectedCategory = "All Listed Items";
+  List<Food> cart = [];
 }

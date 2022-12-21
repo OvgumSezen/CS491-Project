@@ -174,7 +174,7 @@ class _RestaurantPageState extends State<RestaurantPage> {
             ],
           ),
           SizedBox(
-            height: 100,
+            height: 75,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: widget.restaurant.foodCategories.length,
@@ -231,7 +231,7 @@ class FoodItemCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Text(
                   foodItem.name,
                   style: Theme.of(context).textTheme.headline5!.copyWith(
@@ -239,7 +239,7 @@ class FoodItemCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Text(
                   foodItem.foodCategory,
                   style: Theme.of(context)
@@ -249,7 +249,7 @@ class FoodItemCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Text(
                   foodItem.price.toString() + " \$",
                   style: Theme.of(context)
@@ -260,6 +260,22 @@ class FoodItemCard extends StatelessWidget {
               ),
             ],
           ),
+          Container(
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: IconButton(
+              color: Colors.black,
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                print("Add to cart");
+                Singleton.instance.cart.add(foodItem);
+                print(Singleton.instance.cart);
+              },
+            ),
+          )
         ],
       ),
     );
@@ -280,7 +296,7 @@ class FoodCategoryButton extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
           width: 100,
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.greenAccent.shade400,
