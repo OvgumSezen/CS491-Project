@@ -18,6 +18,7 @@ class Restaurant {
   final double maxDiscount;
   final int index;
   final int deliveryTime;
+  bool isFavorite = false;
 
   Restaurant({
     required this.id,

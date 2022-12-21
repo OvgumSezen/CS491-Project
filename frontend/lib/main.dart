@@ -1,4 +1,6 @@
+import 'package:bitirapp/controller/session_controller/session_controller.dart';
 import 'package:bitirapp/pages/login/login_screen.dart';
+import 'package:bitirapp/pages/restaurant/restaurant.dart';
 import 'package:bitirapp/pages/settings/settings_try.dart';
 import 'package:bitirapp/pages/search/try_page.dart';
 import 'package:bitirapp/pages/cart/try2_page.dart';
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
 
         '/homePage': (context) => const HomePage(),
         '/settings': (context) => const SettingsPage(),
+        '/restaurant': (context) => RestaurantPage(restaurant: Singleton.instance.SelectedRestaurant),
         '/try': (context) => const TryPage(),
         '/try2': (context) => const Try2Page(),
         '/loginScreen': (context) => (LoginScreen()),

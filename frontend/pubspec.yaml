@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   smooth_page_indicator: ^1.0.0+2
   equatable: ^2.0.5
+  favorite_button: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -118,6 +119,7 @@ flutter:
     - Assets/walk/walk2.PNG
     - Assets/walk/walk3.PNG
     - Assets/walk/walk4.JPG
+    - Assets/categories/icons8-restaurant-50.png
     - Assets/categories/icons8-champagne-50.png
     - Assets/categories/icons8-dessert-50.png
     - Assets/categories/icons8-hamburger-50.png
@@ -128,6 +130,11 @@ flutter:
     - Assets/restaurants/mcdonalds.png
     - Assets/restaurants/pizza_hut.png
     - Assets/restaurants/subway.png
+    - Assets/foods/burger.png
+    - Assets/foods/cupcake.png
+    - Assets/foods/icecream.png
+    - Assets/foods/pizza.png
+    - Assets/foods/sushi.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
