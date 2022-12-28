@@ -25,9 +25,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
             Navigator.pushReplacementNamed(context, '/homePage'),
           }
         else if (index == 1)
-          {Navigator.pushReplacementNamed(context, '/try')}
+          {Navigator.pushReplacementNamed(context, '/search')}
         else if (index == 2)
-            {Navigator.pushReplacementNamed(context, '/try2')}
+          {Navigator.pushReplacementNamed(context, '/cart')}
         else if (index == 3)
           {
             Navigator.pushReplacementNamed(context, '/settingsTry'),
@@ -38,18 +38,16 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(
-          icon: Icon(widget.currentIndex != 0
-              ? Icons.home_outlined
-              : Icons.home,),
+          icon: Icon(
+            widget.currentIndex != 0 ? Icons.home_outlined : Icons.home,
+          ),
           label: 'Home',
-
 
           //backgroundColor: Colors.black,
         ),
         BottomNavigationBarItem(
-          icon: Icon(widget.currentIndex != 1
-              ? Icons.search_outlined
-              : Icons.search),
+          icon: Icon(
+              widget.currentIndex != 1 ? Icons.search_outlined : Icons.search),
           label: 'Search',
           //backgroundColor: Colors.black,
         ),

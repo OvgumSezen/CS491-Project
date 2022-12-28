@@ -190,12 +190,13 @@ class CategoryButton extends StatelessWidget {
                   icon: Image.asset(category.imageUrl),
                   onPressed: () {
                     print(Singleton.instance.selectedCategoryRestaurant);
-                    Singleton.instance.selectedCategoryRestaurant = category.name;
+                    Singleton.instance.selectedCategoryRestaurant =
+                        category.name;
                     if (Singleton.instance.selectedCategoryRestaurant ==
                         "All Restaurants") {
                       Singleton.instance.selectedCategoryRestaurant =
                           "Popular Restaurants";
-                    } 
+                    }
                     print(Singleton.instance.selectedCategoryRestaurant);
                     notifyParent();
                   }),
